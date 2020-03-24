@@ -1,1 +1,1 @@
-# snippets
+# Contains my personal snippets
