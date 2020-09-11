@@ -14,6 +14,6 @@ sudo apt-get -o Dpkg::Options::="--force-overwrite" install --fix-broken
 
 ### 3. Count the number of non-blank lines in the files
 ```bash
-nbl-count = { grep -cve '^\s*$' "$1" }
+nbl-count() = { grep -cve '^\s*$' "$1" }
 ```
 - For example: `nbl-count file.txt` => 10
