@@ -22,3 +22,11 @@ nbl-count() = { grep -cve '^\s*$' "$1" }
 ```bash
 sudo chmod 666 /var/run/docker.sock
 ```
+
+### 5. Fix 2nd screen cannot be detected when reinstalling ubuntu
+```bash
+sudo apt-get purge 'nvidia*'
+sudo add-apt-repository ppa:graphics-drivers
+sudo apt-get update
+sudo ubuntu-drivers autoinstall
+```
