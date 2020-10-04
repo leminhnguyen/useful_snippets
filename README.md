@@ -17,3 +17,8 @@ sudo apt-get -o Dpkg::Options::="--force-overwrite" install --fix-broken
 nbl-count() = { grep -cve '^\s*$' "$1" }
 ```
 - For example: `nbl-count file.txt` => 10
+
+### 4. Fix run docker without sudo
+```bash
+sudo chmod 666 /var/run/docker.sock
+```
