@@ -57,3 +57,10 @@ sizeof(){
     du -h --max-depth=0 "$1"
 }
 ```
+
+### 9. Rsync from local to remote
+- reference: [Rsync Command in Linux - Linuxize](https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/)
+```bash
+rsync -aPz -e "ssh -p port" local_folder/ user@remote_host:remote_folder
+```
+- Note: can run with `-n` option for the sake of safety
