@@ -40,7 +40,7 @@ sudo apt install mysql-workbench
 ### 7. Fix Invalid MIT-MAGIC-COOKIE-1 keyUnable to init server and javafx Caused by: java.lang.UnsupportedOperationException: Unable to open DISPLAY
 - reference: [this link](https://bbs.archlinux.org/viewtopic.php?id=230828)
 
-```
+```bash
 who -> user :1  2017-10-12 21:58 (:1)
 ```
 > Yeah, the reason is that you're on DISPLAY :1.0 - no idea why your environment variable is borked
@@ -50,4 +50,10 @@ zenity --info --text foobar
 ```
 > Check your profile files and bashrc (or zshrc or whatever) and /etc/environment and DE environment configuration - somewhere this will be falsely exported.
 
-
+### 8. Get size of folder
+```bash
+sizeof(){
+    # example: sizeof BOOK --> result: 895M    BOOK/
+    du -h --max-depth=0 "$1"
+}
+```
