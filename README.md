@@ -64,3 +64,12 @@ sizeof(){
 rsync -aPz -e "ssh -p port" local_folder/ user@remote_host:remote_folder
 ```
 - Note: can run with `-n` option for the sake of safety
+
+### 10. Install Java
+- reference: [Install Java in Ubuntu](https://linuxhint.com/install_jdk_14_ubuntu/)
+```
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install openjdk-14-jdk
+$ java -version
+```
