@@ -68,8 +68,14 @@ rsync -aPz -e "ssh -p port" local_folder/ user@remote_host:remote_folder
 ### 10. Install Java
 - reference: [Install Java in Ubuntu](https://linuxhint.com/install_jdk_14_ubuntu/)
 ```
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt install openjdk-14-jdk
-$ java -version
+sudo apt update
+sudo apt upgrade
+sudo apt install openjdk-14-jdk
+java -version
 ```
+
+### 11. Find and kill specific processes
+```bash
+kill $(ps aux | grep '[p]rocess.py' | awk '{print $2}')
+```
+- Note: `[p]` means we do not kill grep process itself 
