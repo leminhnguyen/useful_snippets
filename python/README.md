@@ -44,14 +44,12 @@ unordered_results = p_umap(process_wav, wav_paths, num_cpus=4)
 
 # convert the results to dataframe
 pd.DataFrame(ordered_results)
+````
 
 | wav_path  | duration | samplerate
 | ------------- | ------------- | -------------
 | /tmp/original_wavs/audio1.wav  | 12.0  | 16000  |
 | /tmp/original_wavs/audio2.wav  | 3.55  | 16000  |
 | ...  | ...  | ...  |
-
-
-````
 
 
