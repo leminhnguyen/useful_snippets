@@ -1,4 +1,8 @@
-This repository provides some snippets which you may find something usefully for doing your jobs. 
+
+<h3 align="center">
+    <p>This repository provides some snippets which you may find something usefully for doing your jobs.</p>
+</h3>
+ 
 
 ## Some kind of snippets:
 
