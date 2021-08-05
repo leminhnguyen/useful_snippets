@@ -1,0 +1,1 @@
+This repository provides some snippets which you may find something usefully for performing your jobs.
