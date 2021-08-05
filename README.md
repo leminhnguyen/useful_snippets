@@ -1,6 +1,6 @@
 
-<h3 align="center">
-    <p>This repository provides some snippets which you may find something usefully for doing your jobs.</p>
+<h3 align="left">
+    <p>This repository provides some useful snippets that you may need in some situations.</p>
 </h3>
  
 
