@@ -4,7 +4,7 @@
 
 ### Download window terminal
 
-With window terminal we can use some common commands in Linux like `ls`, `cd`, `scp`, `ssh`... If you're familiar with Linux and want to use more commands, please install [WSL (Window Subsystem for Linux)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?ranMID=46131&ranEAID=a1LgFw09t88&ranSiteID=a1LgFw09t88-wsO_vuOpJsLH4s92WtO5iw&epi=a1LgFw09t88-wsO_vuOpJsLH4s92WtO5iw&irgwc=1&OCID=AID2200057_aff_7806_1243925&tduid=%28ir__bl2gtjnvwgkfqzuf0iq621u0ze2xrkty3g0rltd200%29%287806%29%281243925%29%28a1LgFw09t88-wsO_vuOpJsLH4s92WtO5iw%29%28%29&irclickid=_bl2gtjnvwgkfqzuf0iq621u0ze2xrkty3g0rltd200).
+With window terminal we can use some common commands in Linux like `ls`, `cd`, `scp`, `ssh`... If you're familiar with Linux and want to use more commands, please install [WSL (Window Subsystem for Linux)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?ranMID=46131&ranEAID=a1LgFw09t88&ranSiteID=a1LgFw09t88-wsO_vuOpJsLH4s92WtO5iw&epi=a1LgFw09t88-wsO_vuOpJsLH4s92WtO5iw&irgwc=1&OCID=AID2200057_aff_7806_1243925&tduid=%28ir__bl2gtjnvwgkfqzuf0iq621u0ze2xrkty3g0rltd200%29%287806%29%281243925%29%28a1LgFw09t88-wsO_vuOpJsLH4s92WtO5iw%29%28%29&irclickid=_bl2gtjnvwgkfqzuf0iq621u0ze2xrkty3g0rltd200) and itergrate with window terminal.
 
 Link download: [window terminal download](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?ranMID=46131&ranEAID=a1LgFw09t88&ranSiteID=a1LgFw09t88-DnkwG9hHnodeH5k2AklK2Q&epi=a1LgFw09t88-DnkwG9hHnodeH5k2AklK2Q&irgwc=1&OCID=AID2200057_aff_7806_1243925&tduid=%28ir__bl2gtjnvwgkfqzuf0iq621u0ze2xrkt13s0rltd200%29%287806%29%281243925%29%28a1LgFw09t88-DnkwG9hHnodeH5k2AklK2Q%29%28%29&irclickid=_bl2gtjnvwgkfqzuf0iq621u0ze2xrkt13s0rltd200&activetab=pivot:overviewtab)
 
@@ -45,4 +45,4 @@ Try to connect to Linux server, if you don't have the ssh key or something went 
 ssh -p port username@server_url
 ````
 
-If all steps above were successfully completed, then you have never typed password anymore (also when connecting by vscode)
+If all steps above were successfully completed, then you have never typed password anymore (also when connecting by)
