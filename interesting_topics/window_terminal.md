@@ -18,10 +18,11 @@ Screenshot get from official page:
 
 ### Connect to Linux server without password
 
-Create public key with `ssh-keygen`, this command will create a private key and a public key, places the public key to anywhere that you want connecting to and never shares your private key to someone. By default the private key will be in `C:\Users\username\.ssh\id_rsa` and the public key will be in `C:\Users\username\.ssh\id_rsa.pub`. See the following example:
+Create public key with `ssh-keygen`, this command will create a private key and a public key, places the public key to anywhere that you want connecting to and never shares your private key to someone. By default the private key will be in `C:\Users\username\.ssh\id_rsa` and the public key will be in `C:\Users\username\.ssh\id_rsa.pub`. Run the following command.
 
 ````sh
 ssh-keygen.exe
+### output ###
 # Generating public/private rsa key pair.
 # Enter file in which to save the key (C:\Users\nguyenlm/.ssh/id_rsa):
 ````
@@ -43,3 +44,5 @@ Try to connect to Linux server, if you don't have the ssh key or something went 
 ````sh
 ssh -p port username@server_url
 ````
+
+If all steps above were successfully completed, then you have never typed password anymore (also when connecting by vscode)
