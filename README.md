@@ -9,6 +9,11 @@
 - [Bash snippets](bash/README.md)
 - [Python snippets](python/README.md)
 
+## Some interesting topics
+
+- [Use Colab/Kaggle in VS Code]()
+- [Connect to Linux server with Window terminal]()
+
 ## Citation
 
 The code can be stolen from this repo without any permission and all contributors are welcome but you should refer the link to this repo in your code likes the following.
