@@ -11,8 +11,8 @@
 
 ## Some interesting topics
 
-- [Use Colab/Kaggle in VS Code]()
-- [Connect to Linux server with Window terminal]()
+- [Use Colab/Kaggle in VS Code](interesting_topics/colabcode.md)
+- [Connect to Linux server easily with Window Terminal](interesting_topics/window_terminal.md)
 
 ## Citation
 

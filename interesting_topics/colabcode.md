@@ -1,5 +1,8 @@
-## Chạy Kaggle hoặc Colab trên Vscode
-Cơ chế hoạt động của cái này là sẽ dùng bên thứ 3 `ngrok` để connect `VS Code` và `Kaggle` hoặc `Colab`. Ở hướng dẫn này thì mình dùng `Kaggle`.
+<h3 align="left">
+    <p>😳 Chạy Kaggle hoặc Colab trên Vscode </p>
+</h3>
+
+Cơ chế hoạt động của cái này là sẽ dùng bên thứ 3 `ngrok` để connect `VS Code` và `Kaggle` (hoặc `Colab`). Ở hướng dẫn này thì mình dùng `Kaggle`.
 
 
 ### Step1: Tạo tài khoản trên ngrok tại địa chỉ https://dashboard.ngrok.com/signup sau đó copy cái authtoken ở trang Setup & Installation
