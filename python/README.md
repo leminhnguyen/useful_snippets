@@ -1,11 +1,8 @@
 ## The table of contents
 
-- [The table of contents](#the-table-of-contents)
 - [Multiprocessing with `p_tqdm` library](#multiprocessing-with-p_tqdm-library)
-  - [Installation](#installation)
-  - [Example](#example)
 - [Get audio duration very fast](#get-audio-duration-very-fast)
-  - [Example](#example-1)
+- [Use decorator to measure processing time of a function](#time-decorator)
 
 `<a name="multiprocessing-with-p_tqdm-library"></a>`
 
@@ -61,6 +58,7 @@ pd.DataFrame(ordered_results)
 
 `<a name="very-fast-audio-duration"></a>`
 ## Get audio duration very fast
+We will use a built-in module called `wave` to read the audio header only to get metadata.
 
 ### Example
 ````python
@@ -73,4 +71,30 @@ def get_duration(wav_file):
     return round(nframes/rate, 2)
 
 print(get_duration("/tmp/test.wav")) # 3.21s
+````
+
+`<a name="time-decorator"></a>`
+## Use decorator to measure processing time of a function
+
+````python
+import time, random as rd
+
+def time_decorator(function):
+    def wrapper(*args, **kwargs):
+        stime = time.time()
+        result = function(*args, **kwargs)
+        process_time = time.time() - stime
+        print(f"{function.__name__} taken time: {process_time} ms")
+        return result
+    return wrapper 
+
+@time_decorator
+def process():
+  total = 0
+  for i in range(rd.randint(10000, 10_000_000)):
+      total += i
+  return total
+
+# process taken time: 0.6141083240509033 ms
+process()
 ````
