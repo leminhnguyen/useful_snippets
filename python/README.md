@@ -1,12 +1,12 @@
-## The table of contents
+# The table of contents
+[1. Multiprocessing with `p_tqdm` library](#multiprocessing-with-p_tqdm-library)<br>
+[2. Get audio duration very fast](#get-audio-duration-very-fast)<br>
+[3. Use decorator to measure processing time of a function](#time-decorator)
 
-- [Multiprocessing with `p_tqdm` library](#multiprocessing-with-p_tqdm-library)
-- [Get audio duration very fast](#get-audio-duration-very-fast)
-- [Use decorator to measure processing time of a function](#time-decorator)
 
-`<a name="multiprocessing-with-p_tqdm-library"></a>`
+<div id="multiprocessing-with-p_tqdm-library">
 
-## Multiprocessing with `p_tqdm` library
+## 1. Multiprocessing with `p_tqdm` library
 
 ### Installation
 
@@ -55,9 +55,9 @@ pd.DataFrame(ordered_results)
 | /tmp/original_wavs/audio2.wav | 3.55     | 16000      |
 | ...                           | ...      | ...        |
 
+<div id="get-audio-duration-very-fast">
 
-`<a name="very-fast-audio-duration"></a>`
-## Get audio duration very fast
+## 2. Get audio duration very fast
 We will use a built-in module called `wave` to read the audio header only to get metadata.
 
 ### Example
@@ -73,9 +73,11 @@ def get_duration(wav_file):
 print(get_duration("/tmp/test.wav")) # 3.21s
 ````
 
-`<a name="time-decorator"></a>`
-## Use decorator to measure processing time of a function
+<div id="time-decorator">
 
+## 3. Use decorator to measure processing time of a function
+
+### Example
 ````python
 import time, random as rd
 
