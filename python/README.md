@@ -1,8 +1,14 @@
 ## The table of contents
 
-1. [Process data in parallel with multi-processing](#multiprocessing)
+- [The table of contents](#the-table-of-contents)
+- [Multiprocessing with `p_tqdm` library](#multiprocessing-with-p_tqdm-library)
+  - [Installation](#installation)
+  - [Example](#example)
+- [Get audio duration very fast](#get-audio-duration-very-fast)
+  - [Example](#example-1)
 
-<a name="multiprocessing"></a>
+`<a name="multiprocessing-with-p_tqdm-library"></a>`
+
 ## Multiprocessing with `p_tqdm` library
 
 ### Installation
@@ -46,10 +52,25 @@ unordered_results = p_umap(process_wav, wav_paths, num_cpus=4)
 pd.DataFrame(ordered_results)
 ````
 
-| wav_path  | duration | samplerate
-| ------------- | ------------- | -------------
-| /tmp/original_wavs/audio1.wav  | 12.0  | 16000  |
-| /tmp/original_wavs/audio2.wav  | 3.55  | 16000  |
-| ...  | ...  | ...  |
+| wav_path                      | duration | samplerate |
+| ----------------------------- | -------- | ---------- |
+| /tmp/original_wavs/audio1.wav | 12.0     | 16000      |
+| /tmp/original_wavs/audio2.wav | 3.55     | 16000      |
+| ...                           | ...      | ...        |
 
 
+`<a name="very-fast-audio-duration"></a>`
+## Get audio duration very fast
+
+### Example
+````python
+import wave
+
+def get_duration(wav_file):
+    wav = wave.open(wav_file) 
+    sample_rate = wav.getframerate()
+    nframes = wav.getnframes()
+    return round(nframes/rate, 2)
+
+print(get_duration("/tmp/test.wav")) # 3.21s
+````
