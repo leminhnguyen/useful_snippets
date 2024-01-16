@@ -100,3 +100,15 @@ def process():
 # process taken time: 0.6141083240509033 ms
 process()
 ````
+
+
+## 4. [Kaggle/Colab] Permission denied although I have set to "anyone with link"
+```python
+!pip install --upgrade --no-cache-dir gdown
+
+import gdown; 
+file_id = '1N3-c-IzIqYNB53ojvZKkEEMO0c7eEQZQ'
+url = f"https://drive.google.com/uc?export=download&id={file_id}&confirm=t"
+output = 'out.zip' 
+gdown.download(url, output, quiet=False)
+```
