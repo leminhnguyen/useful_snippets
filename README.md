@@ -17,7 +17,7 @@
 - [🐚 Bash Snippets](#-bash-snippets)
 - [🐍 Python Snippets](#-python-snippets)
 - [🌟 Interesting Topics](#-interesting-topics)
-- [📝 Citation](#-citation)
+- [� License](#-license)
 - [🤝 Contributing](#-contributing)
 
 ---
@@ -70,22 +70,14 @@ Step-by-step guides on useful development workflows.
 
 ---
 
-## 📝 Citation
+## � License
 
-All code in this repository is free to use. A reference back to the repo is appreciated:
+This project is licensed under the [MIT License](LICENSE).
 
-```bash
-# Source: https://github.com/leminhnguyen/useful_snippets
 ```
+MIT License
 
-Example in `~/.bashrc`:
-
-```bash
-# the code got from https://github.com/leminhnguyen/useful_snippets
-sizeof() {
-    # example: sizeof BOOK  -->  895M    BOOK/
-    du -h --max-depth=0 "$1"
-}
+Copyright (c) 2026 leminhnguyen
 ```
 
 ---

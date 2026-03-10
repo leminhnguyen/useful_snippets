@@ -17,6 +17,10 @@ A collection of handy shell functions and one-liners. Add the functions to your 
 9. [Find and Kill Specific Processes](#9-find-and-kill-specific-processes)
 10. [Download Multiple Files into a Folder](#10-download-multiple-files-into-a-folder)
 11. [Recover a Lost tmux Session](#11-recover-a-lost-tmux-session)
+12. [Check Disk Usage by User](#12-check-disk-usage-by-user)
+13. [Fix "No GPU to Monitor" / `apt_pkg` Error](#13-fix-no-gpu-to-monitor--apt_pkg-error)
+14. [Fix CUDA Unknown Error](#14-fix-cuda-unknown-error)
+15. [Fix Docker GPU Capabilities Error](#15-fix-docker-gpu-capabilities-error)
 
 ---
 
@@ -169,4 +173,67 @@ bash downloading.sh -f my_folder -u https://example.com/file1.zip -u https://exa
 
 ```bash
 pkill -USR1 tmux
+```
+
+---
+
+## 12. Check Disk Usage by User
+
+See how much disk space each user (or subdirectory) is consuming under a given path, sorted from largest to smallest:
+
+```bash
+sudo du -h -d 1 /home | sort -hr
+```
+
+---
+
+## 13. Fix "No GPU to Monitor" / `apt_pkg` Error
+
+**Error:** `ImportError: No module named apt_pkg` causing `nvidia-smi` or GPU monitoring tools to fail.
+
+Reinstall Python and the NVIDIA driver, then reboot:
+
+```bash
+# Reinstall Python
+sudo apt install --reinstall python3 python python3-minimal --fix-broken
+
+# Reinstall NVIDIA driver
+sudo ubuntu-drivers install
+
+# Reboot
+sudo reboot
+```
+
+**References:**
+- https://askubuntu.com/questions/1196401/how-to-fix-python3-after-messing-it-up
+- https://ubuntu.com/server/docs/nvidia-drivers-installation
+- https://stackoverflow.com/questions/42984743/nvidia-smi-has-failed-because-it-couldnt-communicate-with-the-nvidia-driver
+
+---
+
+## 14. Fix CUDA Unknown Error
+
+**Error:** `CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment`
+
+Reference: [Stack Overflow](https://stackoverflow.com/questions/66857471/cuda-initialization-cuda-unknown-error-this-may-be-due-to-an-incorrectly-set)
+
+> Make sure to **reboot** before running the following commands.
+
+```bash
+sudo rmmod nvidia_uvm
+sudo modprobe nvidia_uvm
+```
+
+---
+
+## 15. Fix Docker GPU Capabilities Error
+
+**Error:** `could not select device driver "" with capabilities: [[gpu]]`
+
+Reference: [NVIDIA Developer Forums](https://forums.developer.nvidia.com/t/could-not-select-device-driver-with-capabilities-gpu/80200)
+
+```bash
+sudo apt install -y nvidia-docker2
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
