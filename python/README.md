@@ -1,53 +1,60 @@
-# The table of contents
-[1. Multiprocessing with `p_tqdm` library](#multiprocessing-with-p_tqdm-library)<br>
-[2. Get audio duration very fast](#get-audio-duration-very-fast)<br>
-[3. Use decorator to measure processing time of a function](#time-decorator)
+# 🐍 Python Snippets
 
+Reusable Python patterns and utilities for common development tasks.
 
-<div id="multiprocessing-with-p_tqdm-library">
+---
 
-## 1. Multiprocessing with `p_tqdm` library
+## Table of Contents
+
+1. [Multiprocessing with `p_tqdm`](#1-multiprocessing-with-p_tqdm)
+2. [Get Audio Duration Very Fast](#2-get-audio-duration-very-fast)
+3. [Time Decorator](#3-time-decorator)
+4. [Fix Google Drive Download Permission](#4-fix-google-drive-download-permission)
+
+---
+
+## 1. Multiprocessing with `p_tqdm`
+
+Run functions in parallel across a list with a built-in progress bar.
 
 ### Installation
 
-````bash
+```bash
 pip install p_tqdm
-````
+```
 
 ### Example
 
-````python
+```python
 from scipy.io.wavfile import read
 from p_tqdm import p_map, p_umap
 import os
 import pandas as pd
 
-# defines the function which need to be processed in parallel
 def process_wav(wav_path):
     sr, wav = read(wav_path)
-    duration = len(wav)/sr
     return {
         "wav_path": wav_path,
-        "duration": duration,
-        "samplerate": sr
+        "duration": len(wav) / sr,
+        "samplerate": sr,
     }
 
-# gets the list of audio paths
 wav_dir = "/tmp/original_wavs"
-wav_paths = [f"{wav_dir}/{file}" for file in os.listdir(wav_dir)]
+wav_paths = [f"{wav_dir}/{f}" for f in os.listdir(wav_dir)]
 
-### process in parallel and return the ordered results ###
+# Ordered results (preserves input order)
 ordered_results = p_map(process_wav, wav_paths, num_cpus=4)
 
-### process in parallel and return the unordered results ###
+# Unordered results (faster, no order guarantee)
 unordered_results = p_umap(process_wav, wav_paths, num_cpus=4)
 
-### in the process the progress bar will be printed ###
-60%|████████████████████████            | 60/100 [00:02<00:01, 1.00s/it]
+# Progress bar is printed automatically during processing:
+# 60%|████████████████████████            | 60/100 [00:02<00:01, 1.00s/it]
 
-# convert the results to dataframe
 pd.DataFrame(ordered_results)
-````
+```
+
+**Output:**
 
 | wav_path                      | duration | samplerate |
 | ----------------------------- | -------- | ---------- |
@@ -55,59 +62,71 @@ pd.DataFrame(ordered_results)
 | /tmp/original_wavs/audio2.wav | 3.55     | 16000      |
 | ...                           | ...      | ...        |
 
-<div id="get-audio-duration-very-fast">
+---
 
-## 2. Get audio duration very fast
-We will use a built-in module called `wave` to read the audio header only to get metadata.
+## 2. Get Audio Duration Very Fast
 
-### Example
-````python
+Uses Python's built-in `wave` module to read only the audio header — no full decoding needed.
+
+```python
 import wave
 
 def get_duration(wav_file):
-    wav = wave.open(wav_file) 
-    sample_rate = wav.getframerate()
-    nframes = wav.getnframes()
-    return round(nframes/rate, 2)
+    with wave.open(wav_file) as wav:
+        sample_rate = wav.getframerate()
+        nframes = wav.getnframes()
+    return round(nframes / sample_rate, 2)
 
-print(get_duration("/tmp/test.wav")) # 3.21s
-````
+print(get_duration("/tmp/test.wav"))  # 3.21
+```
 
-<div id="time-decorator">
+---
 
-## 3. Use decorator to measure processing time of a function
+## 3. Time Decorator
 
-### Example
-````python
-import time, random as rd
+Wrap any function to automatically print its execution time.
+
+```python
+import time
+import random as rd
 
 def time_decorator(function):
     def wrapper(*args, **kwargs):
-        stime = time.time()
+        start = time.time()
         result = function(*args, **kwargs)
-        process_time = time.time() - stime
-        print(f"{function.__name__} taken time: {process_time} ms")
+        elapsed = time.time() - start
+        print(f"{function.__name__} took {elapsed:.4f}s")
         return result
-    return wrapper 
+    return wrapper
 
 @time_decorator
 def process():
-  total = 0
-  for i in range(rd.randint(10000, 10_000_000)):
-      total += i
-  return total
+    total = 0
+    for i in range(rd.randint(10_000, 10_000_000)):
+        total += i
+    return total
 
-# process taken time: 0.6141083240509033 ms
 process()
-````
+# process took 0.6141s
+```
 
+---
 
-## 4. [Kaggle/Colab] Permission denied although I have set to "anyone with link"
+## 4. Fix Google Drive Download Permission
+
+**Problem:** `gdown` fails with "Permission denied" even when the file is set to "Anyone with the link".
+
+**Fix:**
+
 ```python
+# In Kaggle / Colab notebook:
 !pip install --upgrade --no-cache-dir gdown
 
-import gdown; 
-file_id = '1N3-c-IzIqYNB53ojvZKkEEMO0c7eEQZQ'
+import gdown
+
+file_id = "1N3-c-IzIqYNB53ojvZKkEEMO0c7eEQZQ"
+gdown.download(id=file_id, output="output_file.zip", quiet=False)
+```
 url = f"https://drive.google.com/uc?export=download&id={file_id}&confirm=t"
 output = 'out.zip' 
 gdown.download(url, output, quiet=False)
